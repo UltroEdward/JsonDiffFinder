@@ -77,7 +77,6 @@ public class Comparator {
 
 	private static void jsonToCsv(String filePath, String content) throws FileNotFoundException, UnsupportedEncodingException {
 		new JFlat(content).json2Sheet().write2csv(filePath, ';');
-
 	}
 
 }
