@@ -7,7 +7,6 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.List;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -32,7 +31,7 @@ public class Comparator {
 		String beforeFilePath = args[0];
 		String afterFilePath = args[1];
 		String diffPath = args[2];
-		OutputType outputType = OutputType.valueOf(args[3].trim());
+		OutputType outputType = OutputType.valueOf(args[3].trim().toUpperCase());
 
 		Comparator comparator = new Comparator();
 
@@ -77,8 +76,8 @@ public class Comparator {
 	}
 
 	private static void jsonToCsv(String filePath, String content) throws FileNotFoundException, UnsupportedEncodingException {
-		JFlat flatMe = new JFlat(content);
-		flatMe.write2csv("filePath");
+		new JFlat(content).json2Sheet().write2csv(filePath, ';');
+
 	}
 
 }
